@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\FavoritesController;
 use App\Controllers\HomeController;
 use App\Controllers\MovieController;
 use App\Kernel\Router\Route;
@@ -7,4 +8,5 @@ use App\Kernel\Router\Route;
 return [
     Route::get('/home', [HomeController::class, 'index']),
     Route::get('/movies', [MovieController::class, 'index']),
+    Route::get('/favorites', [FavoritesController::class, 'index']),
 ];

@@ -4,10 +4,10 @@ namespace App\Controllers;
 
 use App\Kernel\Controller\Controller;
 
-class MovieController extends Controller
+class FavoritesController extends Controller
 {
     public function index(): void
     {
-        $this->view('movies');
+        $this->view('favorites');
     }
 }
