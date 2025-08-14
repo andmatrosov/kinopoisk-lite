@@ -10,4 +10,22 @@ class MovieController extends Controller
     {
         $this->view('movies');
     }
+
+    public function add(): void
+    {
+        $this->view('admin/movies/add');
+    }
+
+    public function store(): void
+    {
+        $validation = $this->request()->validate([
+            'name' => ['required', 'min:3', 'max:50'],
+        ]);
+
+        if (! $validation) {
+            dd('Validation failed', $this->request()->errors());
+        }
+
+        dd('Validation passed');
+    }
 }
