@@ -23,9 +23,16 @@ class MovieController extends Controller
         ]);
 
         if (! $validation) {
-            dd('Validation failed', $this->request()->errors());
+            foreach ($this->request()->errors() as $field => $errors) {
+                $this->session()->set($field, $errors);
+            }
+            $this->redirect('/admin/movies/add');
         }
 
-        dd('Validation passed');
+        $id = $this->db()->insert('movies', [
+            'name' => $this->request()->input('name'),
+        ]);
+
+        dd("Movie with ID $id added successfully.");
     }
 }
